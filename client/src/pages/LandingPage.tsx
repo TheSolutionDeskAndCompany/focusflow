@@ -24,13 +24,17 @@ export default function LandingPage() {
               </p>
               <div className="mt-8 space-x-4">
                 <Link href="/app/goal-input">
-                  <Button size="lg" className="bg-[#0F766E] hover:bg-[#0E6C6C] text-white px-6 py-3 rounded-md font-medium shadow-sm transition duration-150">
-                    Get Started Free
-                  </Button>
+                  <span className="inline-block">
+                    <Button size="lg" className="bg-[#0F766E] hover:bg-[#0E6C6C] text-white px-6 py-3 rounded-md font-medium shadow-sm transition duration-150">
+                      Get Started Free
+                    </Button>
+                  </span>
                 </Link>
-                <Button variant="link" className="text-[#0F766E] hover:text-[#0E6C6C] font-medium px-6 py-3">
-                  Watch Demo
-                </Button>
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener noreferrer">
+                  <Button variant="link" className="text-[#0F766E] hover:text-[#0E6C6C] font-medium px-6 py-3">
+                    Watch Demo
+                  </Button>
+                </a>
               </div>
               <div className="mt-8 flex items-center text-sm text-slate-500">
                 <Check className="h-5 w-5 mr-2 text-green-500" />
@@ -68,39 +72,16 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Trusted By Section */}
-      <section className="bg-white py-12">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-center text-sm font-medium text-slate-500 uppercase tracking-wider mb-8">Trusted by innovative teams</p>
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 justify-items-center items-center">
-            {/* Company logos */}
-            {Array.from({ length: 6 }).map((_, index) => (
-              <div key={index} className={`h-8 text-slate-400 ${index > 3 ? 'hidden lg:block' : ''}`}>
-                <svg className="h-full" viewBox="0 0 100 30" fill="currentColor">
-                  <rect width="80" height="10" rx="2" x="10" y="10" />
-                  <circle cx="20" cy="15" r="5" fill="white" />
-                </svg>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Features Section */}
-      <section id="features" className="py-20 bg-white">
+      <section id="features" className="py-12 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-800 font-display">Focused on what matters most</h2>
-            <p className="mt-4 text-xl text-slate-600">Our features are designed to improve the employee experience, which directly impacts customer satisfaction.</p>
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-800 font-display">Core Benefits</h2>
+            <p className="mt-4 text-lg text-slate-600">Our solution directly connects employee experience to customer outcomes.</p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              {
-                icon: <ClipboardList className="h-6 w-6 text-[#0F766E]" />,
-                title: "Goal Definition",
-                description: "Easily define what challenges your team is solving and track progress toward resolution."
-              },
               {
                 icon: <Users className="h-6 w-6 text-[#0F766E]" />,
                 title: "Employee Satisfaction Tracking",
@@ -115,24 +96,14 @@ export default function LandingPage() {
                 icon: <PenTool className="h-6 w-6 text-[#0F766E]" />,
                 title: "Process Mapping",
                 description: "Create visual maps of your processes and identify friction points that affect both employees and customers."
-              },
-              {
-                icon: <Calendar className="h-6 w-6 text-[#0F766E]" />,
-                title: "Action Planning",
-                description: "Turn insights into action with structured improvement plans that prioritize the most impactful changes."
-              },
-              {
-                icon: <Zap className="h-6 w-6 text-[#0F766E]" />,
-                title: "Real-Time Feedback",
-                description: "Collect feedback at the moment of experience to get authentic insights that drive meaningful improvements."
               }
             ].map((feature, index) => (
-              <Card key={index} className="bg-slate-50 p-8 shadow-sm hover:shadow-md transition duration-300">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+              <Card key={index} className="bg-slate-50 p-6 shadow-sm hover:shadow-md transition duration-300">
+                <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
                   {feature.icon}
                 </div>
-                <h3 className="text-xl font-semibold text-slate-800">{feature.title}</h3>
-                <p className="mt-3 text-slate-600">{feature.description}</p>
+                <h3 className="text-lg font-semibold text-slate-800">{feature.title}</h3>
+                <p className="mt-2 text-slate-600 text-sm">{feature.description}</p>
               </Card>
             ))}
           </div>

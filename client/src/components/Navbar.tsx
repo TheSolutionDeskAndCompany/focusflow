@@ -28,20 +28,14 @@ export default function Navbar() {
           {isAppRoute ? (
             // App navigation for authenticated users
             <div className="hidden md:flex md:items-center md:space-x-6">
-              <Link href="/app/dashboard">
-                <span className={`${location === "/app/dashboard" ? "text-[#0F766E]" : "text-slate-600 hover:text-[#0F766E]"} transition duration-150`}>
-                  Dashboard
-                </span>
+              <Link href="/app/dashboard" className={`${location === "/app/dashboard" ? "text-[#0F766E]" : "text-slate-600 hover:text-[#0F766E]"} transition duration-150`}>
+                Dashboard
               </Link>
-              <Link href="/app/goal-input">
-                <span className={`${location === "/app/goal-input" ? "text-[#0F766E]" : "text-slate-600 hover:text-[#0F766E]"} transition duration-150`}>
-                  New Challenge
-                </span>
+              <Link href="/app/goal-input" className={`${location === "/app/goal-input" ? "text-[#0F766E]" : "text-slate-600 hover:text-[#0F766E]"} transition duration-150`}>
+                New Challenge
               </Link>
-              <Link href="/app/survey">
-                <span className={`${location === "/app/survey" ? "text-[#0F766E]" : "text-slate-600 hover:text-[#0F766E]"} transition duration-150`}>
-                  Feedback
-                </span>
+              <Link href="/app/survey" className={`${location === "/app/survey" ? "text-[#0F766E]" : "text-slate-600 hover:text-[#0F766E]"} transition duration-150`}>
+                Feedback
               </Link>
             </div>
           ) : (
@@ -72,9 +66,11 @@ export default function Navbar() {
                   Login
                 </Link>
                 <Link href="/app/goal-input">
-                  <Button className="bg-[#0F766E] hover:bg-[#0E6C6C] text-white">
-                    Get Started
-                  </Button>
+                  <span className="inline-block">
+                    <Button className="bg-[#0F766E] hover:bg-[#0E6C6C] text-white">
+                      Get Started
+                    </Button>
+                  </span>
                 </Link>
               </div>
             )}
@@ -100,27 +96,21 @@ export default function Navbar() {
               {isAppRoute ? (
                 // App navigation for mobile
                 <>
-                  <Link href="/app/dashboard">
-                    <a className="block px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:text-[#0F766E] hover:bg-slate-50">
-                      Dashboard
-                    </a>
+                  <Link href="/app/dashboard" className="block px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:text-[#0F766E] hover:bg-slate-50">
+                    Dashboard
                   </Link>
-                  <Link href="/app/goal-input">
-                    <a className="block px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:text-[#0F766E] hover:bg-slate-50">
-                      New Challenge
-                    </a>
+                  <Link href="/app/goal-input" className="block px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:text-[#0F766E] hover:bg-slate-50">
+                    New Challenge
                   </Link>
-                  <Link href="/app/survey">
-                    <a className="block px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:text-[#0F766E] hover:bg-slate-50">
-                      Feedback
-                    </a>
+                  <Link href="/app/survey" className="block px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:text-[#0F766E] hover:bg-slate-50">
+                    Feedback
                   </Link>
-                  <a className="block px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:text-[#0F766E] hover:bg-slate-50">
+                  <button className="w-full text-left block px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:text-[#0F766E] hover:bg-slate-50">
                     Profile
-                  </a>
-                  <a className="block px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:text-[#0F766E] hover:bg-slate-50">
+                  </button>
+                  <button className="w-full text-left block px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:text-[#0F766E] hover:bg-slate-50">
                     Log Out
-                  </a>
+                  </button>
                 </>
               ) : (
                 // Marketing nav for mobile
@@ -137,10 +127,8 @@ export default function Navbar() {
                   <a href="#contact" className="block px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:text-[#0F766E] hover:bg-slate-50">
                     Contact
                   </a>
-                  <Link href="/app/dashboard">
-                    <a className="block px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:text-[#0F766E] hover:bg-slate-50">
-                      Login
-                    </a>
+                  <Link href="/app/dashboard" className="block px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:text-[#0F766E] hover:bg-slate-50">
+                    Login
                   </Link>
                 </>
               )}
