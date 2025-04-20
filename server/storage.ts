@@ -3,6 +3,8 @@ import {
   challenges, type Challenge, type InsertChallenge,
   satisfactionRatings, type SatisfactionRating, type InsertSatisfactionRating
 } from "@shared/schema";
+import { db } from "./db";
+import { eq } from "drizzle-orm";
 
 export interface IStorage {
   // User operations
@@ -202,4 +204,121 @@ export class MemStorage implements IStorage {
   }
 }
 
-export const storage = new MemStorage();
+export class DatabaseStorage implements IStorage {
+  async getUser(id: number): Promise<User | undefined> {
+    const [user] = await db.select().from(users).where(eq(users.id, id));
+    return user || undefined;
+  }
+
+  async getUserByUsername(username: string): Promise<User | undefined> {
+    const [user] = await db.select().from(users).where(eq(users.username, username));
+    return user || undefined;
+  }
+
+  async createUser(insertUser: InsertUser): Promise<User> {
+    const [user] = await db
+      .insert(users)
+      .values(insertUser)
+      .returning();
+    return user;
+  }
+
+  async getAllChallenges(): Promise<Challenge[]> {
+    return await db.select().from(challenges);
+  }
+
+  async getChallengeById(id: number): Promise<Challenge | undefined> {
+    const [challenge] = await db.select().from(challenges).where(eq(challenges.id, id));
+    return challenge || undefined;
+  }
+
+  async createChallenge(insertChallenge: InsertChallenge): Promise<Challenge> {
+    const now = new Date();
+    const [challenge] = await db
+      .insert(challenges)
+      .values({
+        ...insertChallenge,
+        createdAt: now,
+        completed: false
+      })
+      .returning();
+    return challenge;
+  }
+
+  async getAllSatisfactionRatings(): Promise<SatisfactionRating[]> {
+    return await db.select().from(satisfactionRatings);
+  }
+
+  async getSatisfactionRatingsByChallengeId(challengeId: number): Promise<SatisfactionRating[]> {
+    return await db
+      .select()
+      .from(satisfactionRatings)
+      .where(eq(satisfactionRatings.challengeId, challengeId));
+  }
+
+  async createSatisfactionRating(insertRating: InsertSatisfactionRating): Promise<SatisfactionRating> {
+    const now = new Date();
+    const [rating] = await db
+      .insert(satisfactionRatings)
+      .values({
+        ...insertRating,
+        createdAt: now
+      })
+      .returning();
+    return rating;
+  }
+
+  async getDashboardStats(): Promise<any> {
+    // Get all ratings
+    const allRatings = await db.select().from(satisfactionRatings);
+    const averageRating = allRatings.length > 0 
+      ? allRatings.reduce((sum, r) => sum + r.rating, 0) / allRatings.length
+      : 0;
+      
+    const positiveRatings = allRatings.filter(r => r.rating >= 4).length;
+    const positivePercentage = allRatings.length > 0 
+      ? (positiveRatings / allRatings.length) * 100
+      : 0;
+      
+    const activeChallenges = await db
+      .select()
+      .from(challenges)
+      .where(eq(challenges.completed, false));
+      
+    // Mock data for department feedback - in a real app this would come from the database
+    const departmentFeedback = {
+      "Sales": 4.2,
+      "Support": 3.8,
+      "Operations": 4.3,
+      "Finance": 3.7,
+      "Marketing": 4.0
+    };
+      
+    return {
+      employeeSatisfaction: {
+        average: averageRating.toFixed(1),
+        change: "+0.3",
+        positive: `${Math.round(positivePercentage)}%`
+      },
+      customerSatisfaction: {
+        percentage: "92%",
+        change: "+4%",
+        responses: 312
+      },
+      processEfficiency: {
+        percentage: "87%",
+        change: "+2%"
+      },
+      activeChallenges: {
+        count: activeChallenges.length,
+        nearingCompletion: 2,
+        onTrack: 3,
+        atRisk: 2
+      },
+      departmentFeedback
+    };
+  }
+}
+
+// Switch to the DatabaseStorage implementation
+export const storage = new DatabaseStorage();
