@@ -1,0 +1,95 @@
+Here’s a concise, low‑scroll site structure that hooks visitors immediately and funnels them through clear next steps:
+
+🌐 1. Landing Page (Above‑the‑Fold Focus)
+Sticky Header (small height)
+
+Logo (top‑left)
+
+Nav buttons (top‑right): Features • Pricing • About • Login
+
+Hero Panel (100vh or full browser height)
+
+Headline (1–2 lines):
+“Turn Process Friction into Flow”
+
+Sub‑heading (1 short sentence):
+“Define goals, collect data, and boost team satisfaction—all in one simple app.”
+
+Primary CTA (button):
+“Get Started” → /signup
+
+Secondary CTA (text link):
+“See Features” → /features
+
+Visual:
+A single, high‑impact illustration or animated SVG showing a clean flowchart morphing into a happy user icon.
+
+Quick‑Feature Teasers (three icons + one‑line captions, all visible without scrolling)
+
+
+🎯 Define Goals	📊 Track Metrics	🙂 Empower Teams
+“Set clear targets”	“Visualize progress”	“Measure ease‑of‑use”
+Each box links to its deep‑dive page (/features#define, etc.).
+
+Micro‑testimonial (single sentence + avatar)
+
+“With FocusFlow, our support team cut resolution time by 40%—and they actually love using it.”
+— Jamie L., Support Lead
+
+(Small font, under feature teasers.)
+
+Footer Strip (minimal height)
+
+Tiny links: Privacy • Terms • Contact
+
+Small copyright
+
+📑 2. Features Overview (/features)
+Overview Hero (short intro)
+
+Expandable Sections or Tabs for each core feature:
+
+Define Goals
+
+Data Collection
+
+Process Mapping
+
+Employee Feedback
+
+Dashboard & Reports
+
+Each section has a one‑paragraph blurb + “Learn More” link to its standalone deep‑dive.
+
+💲 3. Pricing (/pricing)
+Plan Comparison Table (3 columns: Free, Pro, Team)
+
+Call‑to‑Action under each: “Start Free” or “Upgrade”
+
+Money‑back / Trial Info (short note)
+
+📖 4. About & Why It Matters (/about)
+Elevator Pitch (two sentences)
+
+Why Employee Satisfaction Matters (one graphic + one fact:
+“Happy employees → 25% higher customer satisfaction.”)
+
+Our Story (very short)
+
+🔐 5. Login / Signup (/login & /signup)
+Minimal Form: email + password (and “continue with Google/GitHub”)
+
+One‑click switch between Login ↔ Signup
+
+Security reassurance: “Your data is safe & private.”
+
+🔗 Navigation & Flow
+Keep landing at /—no heavy scrolling.
+
+Use prominent CTAs in hero & teasers to drive clicks to deeper pages.
+
+Sticky header ensures users can jump anywhere without scrolling back up.
+
+Micro‑animations (hover, icon transitions) draw the eye without adding length.
+
+This structure ensures your first page is all‑in‑one “elevator pitch”—compact, visually engaging, and primed to send visitors to the next logical step.
